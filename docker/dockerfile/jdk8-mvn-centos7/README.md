@@ -5,6 +5,7 @@
 ### 下载地址
 * [maven](https://maven.apache.org/download.cgi)
 * [JDK](https://www.oracle.com/technetwork/java/javase/archive-139210.html)
+* [dockerhub成品](https://hub.docker.com/r/vperson/build-java)
 
 ### 使用方法
 解压maven和jdk,Dockerfile中使用的是COPY不是ADD.
@@ -15,17 +16,22 @@ docker build -t java-maven .
 
 构建成功后可以使用如下命令测试:
 ```shell
-# docker run --rm vperson/build-java:master-v1 java -version
+# docker run --rm java-maven java -version
 java version "1.8.0_231"
 Java(TM) SE Runtime Environment (build 1.8.0_231-b11)
 Java HotSpot(TM) 64-Bit Server VM (build 25.231-b11, mixed mode)
 ```
 
 ```shell
-# docker run --rm vperson/build-java:master-v1 mvn -version
+# docker run --rm java-maven mvn -version
 Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
 Maven home: /usr/local/maven
 Java version: 1.8.0_231, vendor: Oracle Corporation, runtime: /usr/local/java/jre
 Default locale: zh_CN, platform encoding: UTF-8
 OS name: "linux", version: "4.4.176-1.el7.elrepo.x86_64", arch: "amd64", family: "unix"
+```
+
+### 使用Dockerhub镜像
+```shell
+docker pull vperson/build-java
 ```
